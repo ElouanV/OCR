@@ -1,26 +1,29 @@
-	#Commande du compilateur
-CPP=gcc
-	#Option d'optimisation du programme
-CFLAGS=-O3
-	#Linker
-LDFLAGS=-lSDL -lSDL_mixer
-	#Nom du programme
-EXEC=OCR
+	#OCR Makefile
+CC=gcc
+
+CPPFLAGS= `pkg-config --cflags sdl` -MMD
+CFLAGS= -Wall -Wextra -Werror -std=c99 -O3
+LDFLAGS=
+LDLIBS= `pkg-config --libs sdl` -lSDL_image
+
+
+SRC= main.c grayscale.c pixel_operations.c sdltools.c binar.c
+OBJ=${SRC:.c=.o}
+DEP=${SRC:.c=.d}
+
+all: main
+
+main:${OBJ}
+
+
+
+clean:
+	${RM} ${OBJ} #remove object files
+	${RM} ${DEP} #remove depedency files
+	${RM} main   #remove main program
 
 
 
 
-	#Define the default target
-all:	${EXEC}
-	#Define dependencies and compilation information
-OCR:	main.o
-	gcc main.o
-main.o:	main.c
-	gcc -c main.c
-
-
-
-clean : 
-	rm -fr *.o
-mrproper: clean
-	rm -fr ${EXEC}
+-include ${DEP}
+#END
