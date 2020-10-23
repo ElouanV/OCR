@@ -10,3 +10,5 @@
 
 ## Informations supplémentaire
 [Code source](/source/)
+[Specification of the project](/s3_project_en.pdf)	
+
