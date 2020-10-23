@@ -2,9 +2,9 @@
 CC=gcc
 
 CPPFLAGS= `pkg-config --cflags sdl` -MMD
-CFLAGS= -Wall -Wextra -std=c99 -O3 -g #-Werror 
+CFLAGS= -Wall -Wextra -std=c99 -O3 -g -Werror 
 LDFLAGS=
-LDLIBS= `pkg-config --libs sdl` -lSDL_image
+LDLIBS= `pkg-config --libs sdl` -lSDL_image -lm
 
 
 SRC= main.c grayscale.c pixel_operations.c sdltools.c binar.c

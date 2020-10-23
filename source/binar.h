@@ -7,9 +7,9 @@
 #include "pixel_operations.h"
 #include "sdltools.h"
 
-float mean(int i, int j, int r);
+float mean(int i, int j, int r, int * mat, int h);
 float eacrtype(int i, int j, int r);
-void binar(SDL_Surface* image, int r, float k);
+int *binar(SDL_Surface* image, int r, float k);
 
 
 #endif
