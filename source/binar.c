@@ -133,7 +133,7 @@ int *binar(SDL_Surface* image, int r, float k)
 			SDL_GetRGB(pixel, image-> format, &ng, &g, &b);
 			if (ng > t)
 			{
-				printf("0");	
+				//printf("0");	
 				mat[i*h + j] = 0;
 				//To show binarisation on the image :
 				Uint32 newpixel = SDL_MapRGB(image->format, 255, 255, 255);
@@ -141,7 +141,7 @@ int *binar(SDL_Surface* image, int r, float k)
 			}
 			else
 			{
-				printf("1");
+				//printf("1");
 				mat[i*h+j] = 1;
 				// To show binarization on the image : 
 				Uint32 newpixel = SDL_MapRGB(image->format, 0, 0, 0);
