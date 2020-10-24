@@ -31,6 +31,7 @@ float pixelmean(int i, int j, int r, SDL_Surface* image)
 
 			if ((y < 0)||((long)(x*h+y) >= size))
 			{
+
 				continue;
 			}
 			else
@@ -102,7 +103,6 @@ float stddev(int i, int j, int r, float *mean, SDL_Surface* image)
 
 int *binar(SDL_Surface* image, int r, float k)
 {
-
 	int w = image->w;
 	int h = image->h;
 	float m;
@@ -136,7 +136,7 @@ int *binar(SDL_Surface* image, int r, float k)
 				//printf("0");	
 				mat[i*h + j] = 0;
 				//To show binarisation on the image :
-				Uint32 newpixel = SDL_MapRGB(image->format, 255, 255, 255);
+				Uint32 newpixel = SDL_MapRGB(image->format, 0, 0, 0);
 				put_pixel(image, i, j, newpixel);
 			}
 			else
@@ -144,11 +144,12 @@ int *binar(SDL_Surface* image, int r, float k)
 				//printf("1");
 				mat[i*h+j] = 1;
 				// To show binarization on the image : 
-				Uint32 newpixel = SDL_MapRGB(image->format, 0, 0, 0);
+				Uint32 newpixel = SDL_MapRGB(image->format, 255, 255, 255);
 				put_pixel(image, i, j, newpixel);
 			}
 		}
 	}
+	free(mean);
 	return mat;
 
 }

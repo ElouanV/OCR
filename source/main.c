@@ -6,6 +6,7 @@
 #include "binar.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "noiseremoving.h"
 
 int main(int argc, char **argv)
 {
@@ -33,11 +34,12 @@ int main(int argc, char **argv)
 		// Save a copy of the file after grayscale
 	SDL_SaveBMP(image,"grayscaled.bmp");
 	update_surface(screen_surface,image);
-	//int h = image->h; not used yet
-	//int w = image->w; not used yet
+	//noiserimage(image,7); This function do not word yet, it return a black surface. // FIXME
+	int h = image->h; 
+	int w = image->w;
 	printf("Binarizartion runing . . .\n");
 		// Call binar function from binar.h
-	binar(image,21,0.5); // int *p =   //not used yet
+	binar(image,14,0.3); // int *p =   //not used yet
 	printf("Binarization done\n");
 	printf("Press a key to display binarization\n");
 	wait_for_keypressed();
@@ -47,8 +49,9 @@ int main(int argc, char **argv)
 	printf("Programing ending successfully, copy of each steps have been save in the current directory.\n");
 		// Save image after binarization
 	SDL_SaveBMP(image,"binarized.bmp");
+		// Free surfaces before leaving program
 	SDL_FreeSurface(image);
 	SDL_FreeSurface(screen_surface);
-
+	printf("L'image analysé avait pour hauteur : %i et pour largeur %i\n", h, w);
 	return 0;
 }

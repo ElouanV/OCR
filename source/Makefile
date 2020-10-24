@@ -7,7 +7,7 @@ LDFLAGS=
 LDLIBS= `pkg-config --libs sdl` -lSDL_image -lm
 
 
-SRC= main.c grayscale.c pixel_operations.c sdltools.c binar.c
+SRC= main.c grayscale.c pixel_operations.c sdltools.c binar.c noiseremoving.c #skrewcorrection.h
 OBJ=${SRC:.c=.o}
 DEP=${SRC:.c=.d}
 
