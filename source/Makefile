@@ -27,3 +27,6 @@ clean:
 
 -include ${DEP}
 #END
+
+# This makefile is use to test the preprocessing step of our program.
+# 

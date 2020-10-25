@@ -5,9 +5,17 @@
 #include "pixel_operations.h"
 #include "sdltools.h"
 
+// Only on function to apply grayscale on the given image.
+// * take in parameter SDL_Surface *image which we need to grayscale.
+// * Return : nothing ; changes are made on the SDL_Surface.
+
 void grayscale(SDL_Surface *image)
 {
+
+	// Declaring variables: 
 	Uint8 r, g, b;
+
+	// For each pixels :
 	for(int i = 0; i < image->w; i++)
 	{
 		for(int j = 0; j < image->h; j++)

@@ -18,8 +18,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	printf(" Here is the demonstration of pre-processing of our program, between each step\n");
-	printf("you have to press any key to display changes made on the image\n");
+	printf("Pre-processing is running");
 		// Initialize SDL :
 	SDL_Surface* image;
 	SDL_Surface* screen_surface = NULL;
@@ -32,12 +31,12 @@ int main(int argc, char **argv)
 	grayscale(image);
 	printf("Grayscale done\n");
 		// Save a copy of the file after grayscale
-	SDL_SaveBMP(image,"grayscaled.bmp");
+	SDL_SaveBMP(image,"result/grayscaled.bmp");
 	update_surface(screen_surface,image);
-	//noiserimage(image,7); This function do not word yet, it return a black surface. // FIXME
+	//noiserimage(image,7); //This function do not word yet, it return a black surface. // FIXME
 	int h = image->h; 
 	int w = image->w;
-	printf("Binarizartion runing . . .\n");
+	printf("Binarization runing . . .\n");
 		// Call binar function from binar.h
 	binar(image,14,0.3); // int *p =   //not used yet
 	printf("Binarization done\n");
@@ -46,12 +45,12 @@ int main(int argc, char **argv)
 	update_surface(screen_surface,image);
 	printf("Press a key to leave\n");
 	wait_for_keypressed();
-	printf("Programing ending successfully, copy of each steps have been save in the current directory.\n");
+	printf("Program ending successfully, copy of each steps have been save in the directory /result.\n");
 		// Save image after binarization
-	SDL_SaveBMP(image,"binarized.bmp");
+	SDL_SaveBMP(image,"result/binarized.bmp");
 		// Free surfaces before leaving program
 	SDL_FreeSurface(image);
 	SDL_FreeSurface(screen_surface);
-	printf("L'image analysé avait pour hauteur : %i et pour largeur %i\n", h, w);
+	printf("Image size : %i x %i ", h, w);
 	return 0;
 }

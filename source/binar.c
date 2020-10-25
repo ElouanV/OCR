@@ -66,6 +66,12 @@ void matrixmean(float *mean, int h, int w, int r, SDL_Surface* image)
 
 float stddev(int i, int j, int r, float *mean, SDL_Surface* image)
 {
+	// * Compute the standard deviation of the pixel
+	// * Will be used in the binar function
+	// * int i and int j are the position of the pixel.
+        //	int r is the size of the window and float *mean the array 
+	//	which contain all mean of the image. SDL_SUrface
+	// 	*image is the image to binarize.
 	int w = image->w;
 	int h = image->h;
 	long size = w*h;
@@ -103,6 +109,13 @@ float stddev(int i, int j, int r, float *mean, SDL_Surface* image)
 
 int *binar(SDL_Surface* image, int r, float k)
 {
+	// * Main function of the binarization, will apply the Saulova method to all pixel of the image.
+	// * Call after grayscale in main.c
+	// * SDL_Surface *image is the image to binarize. int r is the size of the window use for Saulova method
+	//	and k is another constant of the Saulovora method. They both can be changed
+	//	in the main.c function to have control on this parameter.
+
+	//Declaring variable : 
 	int w = image->w;
 	int h = image->h;
 	float m;
@@ -121,6 +134,8 @@ int *binar(SDL_Surface* image, int r, float k)
 	Uint32 pixel;
 	Uint8 ng, g, b;
 	ng = 3;
+
+	// For each pixels : 
 	for(int i = 0; i < w; i++)
 	{
 		for(int j = 0; j < h ; j++)
@@ -133,7 +148,6 @@ int *binar(SDL_Surface* image, int r, float k)
 			SDL_GetRGB(pixel, image-> format, &ng, &g, &b);
 			if (ng > t)
 			{
-				//printf("0");	
 				mat[i*h + j] = 0;
 				//To show binarisation on the image :
 				Uint32 newpixel = SDL_MapRGB(image->format, 0, 0, 0);
@@ -141,7 +155,6 @@ int *binar(SDL_Surface* image, int r, float k)
 			}
 			else
 			{
-				//printf("1");
 				mat[i*h+j] = 1;
 				// To show binarization on the image : 
 				Uint32 newpixel = SDL_MapRGB(image->format, 255, 255, 255);
@@ -149,6 +162,7 @@ int *binar(SDL_Surface* image, int r, float k)
 			}
 		}
 	}
+	// Free allocated memory before returning the resulting matrix of the binarization.
 	free(mean);
 	return mat;
 
