@@ -5,6 +5,15 @@
 #include "sdltools.h"
 #include <stdio.h>
 
+
+void copy_matrice(int *src, int *dst, size_t len)
+{
+    for(size_t i = 0; i < len; i++)
+    {
+        dst[i] = src[i];
+    }
+}
+
 // Swap to value of an array
 // * Take in parameters : int *array the array
 // 	size_t i and size_t j both position we need to swap value;

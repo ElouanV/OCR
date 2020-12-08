@@ -1,0 +1,49 @@
+## Project avancement :
+
+- [ ] Pre-processing
+- [ ] Neural Networks
+- [ ] Segmentation
+
+
+## Informations supplémentaire : 
+-[Authors](/AUTHORS)
+-[Code source](/source/)
+- Pre-processing :
+	[pre_processing](/source/pre_processing)
+	To test our pre-processing part, you could use the make to compile it.
+	Then run it with one argument : the path of one image.
+	Some image are given in directory [imagebank](/source/pre_processing/imagebank/).
+	For exemple  : ./main my_image.jpg
+	Then you have to press a key between each step to display changes apply 
+	on the image on your screen. When the program end, you can find a copy of 
+	each step in directory [result](/source/pre_processing/result/).
+
+
+-Segmentation
+
+	Pour tester le code, il suffit juste de remplacer avec le nom du fichier de l'image souhaité à l'emplacement prévus.
+	Plus d'information se trouve dans le code. 
+	La segmentation marche pour tout type de texte simple tapé à l'ordinateur. 
+	La découpe en charactère ne marche qu'avec des image qui contiennent que une ligne de text, bientôt elle marchera pour des 
+	images contenant des texts en entiers. 
+	La méthode utilisée pour la segmentation est inspirée de celles de l'histogramme. On détecte combien il y a de pixel blanc par 
+	ligne et par colonne de la matrice de l'image et on découpe en fonction de cela. 
+
+
+
+
+ -- Reseau de neurones --
+
+    --Structure du reseau
+
+Concernant le reseau de neurones, le premier travail a été de s'interesser au pronleme du XOR et comment pouvoir modeliser cet exercice avec un reseau de neurone simple.
+Premierement, nous nous sommes interessé a la porte AND et OR et nous nous sommes apercus que l'on pouvait modeliser ces portes avec un seul perceptron en trouvant facilement des valeurs de poids et de biais pour les neurones. En posant un systeme avec comme valeurs des neurones les valeurs des differentes entrées de la table de verité des portes, on s'est rendu compte que le systeme a des solutions et qu'ainsi des valeurs de biais et de poids existent. Nous avons donc construit notre reseau avec un deux neurones d'entrée et un layer intermediaire avec une porte and et une porte ou et un neurone de sortie. Ainsi, nous sommes arrivés a trouver des valeurs de biais et de poids faisant marcher notre reseau et donnant le bon resultat de la porte XOR.
+
+    --Apprentissage
+
+Concernant l'apprentissage, nous avons appris les methodes suivantes : gradient descend, back propagations, reseau feed forward. Nous avons essayé de mettre tout ca en place avec le reseau de la porte XOR. Toutes les notions figurent dans le travail envoyé, seulement cela n'est pas encore operationnel, malgré un long travail sur le sujet.
+
+ Pour tester le programme, run le fichier neuronXor.py donnant tout les resultats de la porte XOR selon les differentes entrées
+
+
+

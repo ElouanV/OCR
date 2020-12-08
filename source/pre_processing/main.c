@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	{
 		printf("Execute fail : not enough arguments\n");
 		printf("You have to give the past of the image that you want to binarize in parameters\n");
-		printf("For exemple : ./main my_image.jpg\n");
+		printf("For exemple : ./main image/my_image.jpg\n");
 		return 1;
 	}
 
@@ -51,6 +51,6 @@ int main(int argc, char **argv)
 		// Free surfaces before leaving program
 	SDL_FreeSurface(image);
 	SDL_FreeSurface(screen_surface);
-	printf("Image size : %i x %i ", h, w);
+	printf("Image size : %i x %i \n", h, w);
 	return 0;
 }
